@@ -1,0 +1,10 @@
+<h3>Curva de compromiso</h3>
+<canvas #curva width="360" height="220"></canvas>
+<div class="fila">
+  <button (click)="inv.curva()">Construir curva</button>
+  <button (click)="inv.detener()">Detener</button>
+  <button (click)="inv.usarSugerido()">Usar sugerido</button>
+  @if (inv.sugerido(); as s) {
+    <span>λ sugerido {{ s.l }}</span>
+  }
+</div>

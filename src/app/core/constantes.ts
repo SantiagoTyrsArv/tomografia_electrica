@@ -1,0 +1,14 @@
+export const VERSION = '1.0.0';
+export const NX = 97;
+export const NZ = 25;
+export const CX = NX - 1;
+export const CZ = NZ - 1;
+export const N = NX * NZ;
+export const NC = CX * CZ;
+export const NE = 48;
+export const NB = 64;
+export const NDMAX = 1300;
+export const ESC = 5;
+export const OW = CX * ESC;
+export const OH = CZ * ESC;
+export const TUBO = 1.2;

@@ -1,0 +1,17 @@
+<section class="panel">
+  <h2>1. Mediciones</h2>
+  <div class="fila">
+    <input type="file" accept=".dat,.txt" (change)="leerArchivo($event)">
+    <button (click)="inv.generar()">Generar datos de prueba</button>
+    @if (inv.urlDescarga(); as url) {
+      <a [href]="url" download="medidas.dat">Descargar medidas.dat</a>
+    }
+  </div>
+  <div class="fila">
+    <label>Desviación máx (%) <input type="number" step="0.5" [value]="inv.umbrales().desv" (change)="cambiarUmbral('desv', $event)"></label>
+    <label>Ruido (mV) <input type="number" step="0.01" [value]="inv.umbrales().ruido" (change)="cambiarUmbral('ruido', $event)"></label>
+    <label>Factor vecinas <input type="number" step="0.1" [value]="inv.umbrales().vecinas" (change)="cambiarUmbral('vecinas', $event)"></label>
+    <button (click)="inv.redepurar()">Volver a depurar</button>
+  </div>
+  <p>{{ inv.resumen() }}</p>
+</section>

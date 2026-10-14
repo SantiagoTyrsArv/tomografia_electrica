@@ -1,0 +1,62 @@
+<section class="panel">
+  <h2>4. Rendimiento</h2>
+  <dl>
+    <dt>INP</dt>
+    <dd><b [class.ok]="rend.inpOk()" [class.mal]="!rend.inpOk()">{{ rend.inp() }}</b><br>{{ rend.desglose() }}</dd>
+    <dt>Tareas largas</dt>
+    <dd>{{ rend.largas() }}</dd>
+    <dt>Tiempo por iteración</dt>
+    <dd>{{ rend.iteracion() }}</dd>
+    <dt>Matriz dispersa</dt>
+    <dd>
+      @for (linea of malla(); track $index) {
+        {{ linea }}<br>
+      }
+    </dd>
+    <dt>Memoria compartida</dt>
+    <dd>{{ inv.textoMemoria() }}</dd>
+    <dt>Bytes ahorrados</dt>
+    <dd>{{ inv.textoAhorro() }}</dd>
+    <dt>Gradiente conjugado</dt>
+    <dd>{{ inv.textoInterno() }}</dd>
+    <dt>postMessage</dt>
+    <dd>{{ pool.textoMensajes() }}</dd>
+    <dt>Crear pool</dt>
+    <dd>{{ pool.textoPool() }}</dd>
+    <dt>Latencia de cancelación</dt>
+    <dd>{{ inv.textoCancel() }}</dd>
+  </dl>
+
+  <h3>Iteraciones de Gauss-Newton</h3>
+  <div class="scroll corto">
+    <table>
+      <thead><tr><th>it</th><th>χ²</th><th>rugosidad</th><th>its directo</th><th>máx</th><th>estancados</th><th>ms</th></tr></thead>
+      <tbody>
+        @for (f of inv.log(); track f.it) {
+          <tr><td>{{ f.it }}</td><td>{{ f.chi2.toFixed(3) }}</td><td>{{ f.rug.toFixed(2) }}</td><td>{{ f.fwdTotal }}</td><td>{{ f.fwdMax }}</td><td>{{ f.fwdEst }}</td><td>{{ f.dt.toFixed(0) }}</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Precondicionadores <button (click)="inv.comparar()">Comparar</button></h3>
+  <table>
+    <thead><tr><th>Tipo</th><th>Construcción ms</th><th>Its totales</th><th>Its promedio</th><th>Máx</th><th>Tiempo ms</th></tr></thead>
+    <tbody>
+      @for (b of inv.banco(); track b.tipo) {
+        <tr><td>{{ b.tipo === 'ic' ? 'IC(0)' : 'Diagonal' }}</td><td>{{ b.construccion.toFixed(2) }}</td><td>{{ b.total }}</td><td>{{ b.prom.toFixed(1) }}</td><td>{{ b.max }}</td><td>{{ b.ms.toFixed(0) }}</td></tr>
+      }
+    </tbody>
+  </table>
+
+  <h3>Reproducibilidad <button (click)="inv.reproducir()">Probar con 2, 4 y 8 Workers</button></h3>
+  <p>{{ inv.textoReproEstado() }}</p>
+  <table>
+    <thead><tr><th>Workers</th><th>Huella</th><th>Error de ajuste</th><th>Dif. máx</th><th>Tiempo</th></tr></thead>
+    <tbody>
+      @for (r of inv.repro(); track r.workers) {
+        <tr><td>{{ r.workers }}</td><td>{{ r.hash }}</td><td>{{ r.phi }}</td><td>{{ r.dif }}</td><td>{{ r.segundos }}</td></tr>
+      }
+    </tbody>
+  </table>
+</section>

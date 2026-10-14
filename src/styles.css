@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  background: #f2f4f7;
+  color: #222;
+}
+
+h2 {
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+
+h3 {
+  font-size: 13px;
+  margin: 12px 0 6px;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 0;
+  height: 100%;
+}
+
+.grande {
+  grid-column: 1 / -1;
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid #1d4e89;
+  background: #fff;
+  color: #1d4e89;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 36px;
+}
+
+button:active {
+  background: #e3ecf7;
+}
+
+canvas {
+  width: 100%;
+  border: 1px solid #ddd;
+  touch-action: none;
+}
+
+.scroll {
+  max-height: 360px;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #eee;
+  padding: 4px 6px;
+  text-align: left;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: #fafafa;
+}
+
+tr.off {
+  color: #999;
+  background: #fff4f4;
+}
+
+.ok {
+  color: #2a9d3f;
+  font-weight: 600;
+}
+
+.mal {
+  color: #d62828;
+  font-weight: 600;
+}
+
+.nota {
+  color: #666;
+  font-size: 12px;
+}

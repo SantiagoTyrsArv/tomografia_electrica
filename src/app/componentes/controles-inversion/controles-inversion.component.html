@@ -1,0 +1,36 @@
+<section class="panel">
+  <h2>2. Inversión</h2>
+  <div class="fila">
+    <label class="ancho">λ
+      <input type="range" min="-1" max="4" step="0.1" [value]="inv.lambdaLog()" (input)="moverLambda($event)">
+      <b>{{ inv.lambda().toPrecision(3) }}</b>
+    </label>
+  </div>
+  <div class="fila">
+    <label>Precondicionador
+      <select (change)="cambiarPrec($event)">
+        <option value="ic" [selected]="inv.prec() === 'ic'">IC(0)</option>
+        <option value="diag" [selected]="inv.prec() === 'diag'">Diagonal</option>
+      </select>
+    </label>
+    <label>Orden de nodos
+      <select (change)="inv.cambiarOrden(valor($event))">
+        <option value="x">Por filas (banda 97)</option>
+        <option value="z">Por columnas (banda 25)</option>
+      </select>
+    </label>
+    <label>Workers
+      <select (change)="inv.cambiarWorkers(+valor($event))">
+        <option value="2">2</option>
+        <option value="4" selected>4</option>
+        <option value="8">8</option>
+      </select>
+    </label>
+  </div>
+  <div class="fila">
+    <button (click)="inv.pedir()">Invertir</button>
+    <button (click)="inv.detener()">Detener</button>
+    <button (click)="inv.exportar()">Exportar resultado</button>
+  </div>
+  <p>{{ inv.estado() }}</p>
+</section>

@@ -1,0 +1,10 @@
+.ancho {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ancho input {
+  flex: 1;
+}

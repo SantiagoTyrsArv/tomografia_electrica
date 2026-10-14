@@ -1,0 +1,24 @@
+dl {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4px 8px;
+  margin: 0;
+}
+
+dt {
+  font-weight: 600;
+}
+
+dd {
+  margin: 0;
+}
+
+.corto {
+  max-height: 180px;
+}
+
+@media (max-width: 800px) {
+  dl {
+    grid-template-columns: 1fr;
+  }
+}

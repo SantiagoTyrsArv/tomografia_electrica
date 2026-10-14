@@ -1,0 +1,10 @@
+<div class="fila">
+  <button (click)="zoom(1.4)">+</button>
+  <button (click)="zoom(1 / 1.4)">−</button>
+  <button (click)="ajustar()">Ajustar</button>
+  <span>{{ escala() }}</span>
+  <span #lectura></span>
+</div>
+<canvas #mapa width="960" height="240"></canvas>
+<p class="nota">Línea blanca: tubería (1.2 m). Contorno magenta: zonas candidatas. Toque el mapa para trazar un perfil vertical, arrastre para mover.</p>
+<p>{{ zonas() }}</p>

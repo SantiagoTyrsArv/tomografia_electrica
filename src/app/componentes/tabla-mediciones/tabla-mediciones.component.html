@@ -1,0 +1,22 @@
+<section class="panel grande">
+  <h2>5. Depuración de mediciones</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Usar</th><th>A-B</th><th>M-N</th><th>V (mV)</th><th>Desv</th><th>ρa</th><th>Estado</th><th>Motivo</th></tr></thead>
+      <tbody>
+        @for (m of inv.medidas(); track $index; let i = $index) {
+          <tr [class.off]="!m.activa">
+            <td><input type="checkbox" [checked]="m.activa" (change)="marcar(i, $event)"></td>
+            <td>{{ m.A + 1 }}-{{ m.B + 1 }}</td>
+            <td>{{ m.M + 1 }}-{{ m.N + 1 }}</td>
+            <td>{{ m.V.toFixed(4) }}</td>
+            <td>{{ (m.desv * 100).toFixed(1) }}%</td>
+            <td>{{ m.rhoa.toFixed(1) }}</td>
+            <td>{{ m.manual === null ? 'auto' : 'manual' }}</td>
+            <td>{{ m.motivos.join(', ') }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

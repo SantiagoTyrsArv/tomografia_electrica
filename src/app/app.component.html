@@ -1,0 +1,22 @@
+<header>
+  <h1>Tomografía eléctrica del subsuelo <small>v{{ version }}</small></h1>
+  <span [class.ok]="inv.coi()" [class.mal]="!inv.coi()">crossOriginIsolated: {{ inv.coi() }}</span>
+  <span>{{ nucleos }} núcleos</span>
+</header>
+
+<main>
+  <app-carga-medidas />
+  <app-controles-inversion />
+
+  <section class="panel grande">
+    <h2>3. Sección de resistividad</h2>
+    <app-mapa-resistividad (perfil)="perfilX.set($event)" />
+    <div class="dos">
+      <app-perfil-vertical [x]="perfilX()" />
+      <app-curva-compromiso />
+    </div>
+  </section>
+
+  <app-panel-rendimiento />
+  <app-tabla-mediciones />
+</main>

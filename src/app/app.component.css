@@ -1,0 +1,46 @@
+header {
+  background: #1d4e89;
+  color: #fff;
+  padding: 10px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0;
+  flex: 1;
+}
+
+header .ok,
+header .mal {
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+}
+
+.dos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+app-tabla-mediciones {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+  main,
+  .dos {
+    grid-template-columns: 1fr;
+  }
+}
